@@ -1,6 +1,9 @@
 package com.example.demo;
 
 import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import java.util.List;
 
 @Entity
 @Table(name = "ad")
@@ -8,69 +11,60 @@ public class Ad {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String headline;
-    private String description;
-    private String imageUrl;
-    private Double bidAmount;
-    private String status;
+	private Integer at;
+	private List <String> cur;
+	
+	@JsonManagedReference
+	@OneToMany(mappedBy = "ad")
+	private List <Imp> imp;
+	
+	@JsonBackReference
     @ManyToOne
     @JoinColumn(name = "campaign_id")
     private Campaign campaign;
-    // getters and setters
+    
+    
     public Long getId() {
-        return id;
-    }
+		return id;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public Integer getAt() {
+		return at;
+	}
 
-    public String getHeadline() {
-        return headline;
-    }
+	public void setAt(Integer at) {
+		this.at = at;
+	}
 
-    public void setHeadline(String headline) {
-        this.headline = headline;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
+	
+	public List<String> getCur() {
+		return cur;
+	}
 
-    public String getDescription() {
-        return description;
-    }
+	public void setCur(List<String> cur) {
+		this.cur = cur;
+	}
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+	public Campaign getCampaign() {
+		return campaign;
+	}
 
-    public String getImageUrl() {
-        return imageUrl;
-    }
+	public void setCampaign(Campaign campaign) {
+		this.campaign = campaign;
+	}
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
+	public List<Imp> getImp() {
+		return imp;
+	}
 
-    public Double getBidAmount() {
-        return bidAmount;
-    }
+	public void setImp(List<Imp> imp) {
+		this.imp = imp;
+	}
 
-    public void setBidAmount(Double bidAmount) {
-        this.bidAmount = bidAmount;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public Campaign getCampaign() {
-        return campaign;
-    }
-
-    public void setCampaign(Campaign campaign) {
-        this.campaign = campaign;
-    }
+	
 }
 

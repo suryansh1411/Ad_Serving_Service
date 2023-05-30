@@ -2,6 +2,7 @@ package com.example.demo;
 import jakarta.persistence.*;
 
 import java.util.List;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "advertiser")
@@ -12,6 +13,7 @@ import java.util.List;
         private String name;
         private String industry;
         private String country;
+        @JsonManagedReference
         @OneToMany(mappedBy = "advertiser")
         private List<Campaign> campaigns;
 
@@ -56,4 +58,6 @@ import java.util.List;
     public void setCampaigns(List<Campaign> campaigns) {
         this.campaigns = campaigns;
     }
+    
+    
 }

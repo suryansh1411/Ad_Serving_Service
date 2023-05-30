@@ -20,4 +20,5 @@ public class AdvertisersController {
     public Iterable<Advertiser> getAdvertisers() {
         return advertiserRepo.findAll();
     }
+    
 }

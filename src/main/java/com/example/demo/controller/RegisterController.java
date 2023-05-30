@@ -15,7 +15,6 @@ public class RegisterController {
 
     @PostMapping
     public Advertiser createAdvertiser(@RequestBody Advertiser advertiser) {
-
         //things to do - check if advertiser already exists and add campaigns
         // create advertiser
         Advertiser newAdvertiser = new Advertiser();

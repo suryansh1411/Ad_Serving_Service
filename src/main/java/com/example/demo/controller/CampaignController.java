@@ -25,16 +25,28 @@ public class CampaignController {
                 .orElseThrow(() -> new IllegalArgumentException("Invalid advertiser ID"));
 
         // Create the new campaign
-        Campaign newCampaign = new Campaign();
-        newCampaign.setName(campaign.getName());
-        newCampaign.setStatus(campaign.getStatus());
-        newCampaign.setStartDate(campaign.getStartDate());
-        newCampaign.setEndDate(campaign.getEndDate());
-        newCampaign.setBudget(campaign.getBudget());
-        newCampaign.setAdvertiser(advertiser);
+//        Campaign newCampaign = new Campaign();
+//        newCampaign.setName(campaign.getName());
+//        newCampaign.setStatus(campaign.getStatus());
+//        newCampaign.setStartDate(campaign.getStartDate());
+//        newCampaign.setEndDate(campaign.getEndDate());
+//        newCampaign.setBudget(campaign.getBudget());
+//        newCampaign.setAdvertiser(advertiser);
+        campaign.setAdvertiser(advertiser);
+        campaignRepo.save(campaign);
 
-        campaignRepo.save(newCampaign);
+        return campaign;
+    }
+    
 
-        return newCampaign;
+    @GetMapping
+    public Iterable<Campaign> getCampaigns(){
+    	
+//    	for (Campaign camp: campaignRepo.findAll())
+//    	{
+//    		System.out.println(camp.getAdvertiser().getId());
+//    		System.out.println(camp.getAdvertiser().getName());
+//    	}
+    	return campaignRepo.findAll();
     }
 }

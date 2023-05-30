@@ -4,6 +4,9 @@ import jakarta.persistence.*;
 
 import java.time.LocalDate;
 import java.util.List;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 
 @Entity
 @Table(name = "campaign")
@@ -16,13 +19,17 @@ public class Campaign {
     private LocalDate startDate;
     private LocalDate endDate;
     private Double budget;
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "advertiser_id")
     private Advertiser advertiser;
+    
+    @JsonManagedReference
     @OneToMany(mappedBy = "campaign")
     private List<Ad> ads;
-    // getters and setters
-
+    
+    
+//     getters and setters
 
     public Long getId() {
         return id;
