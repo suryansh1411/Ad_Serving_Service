@@ -14,7 +14,7 @@ public class Banner {
 	private int pos;
 	
 	@JsonBackReference
-	@OneToOne
+	@OneToOne(cascade = {CascadeType.ALL})
 	@JoinColumn(name = "imp_id")
 	private Imp imp;
 	

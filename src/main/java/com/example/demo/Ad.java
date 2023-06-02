@@ -4,6 +4,9 @@ import jakarta.persistence.*;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.util.List;
+import java.util.*;
+
+
 
 @Entity
 @Table(name = "ad")
@@ -23,6 +26,9 @@ public class Ad {
     @JoinColumn(name = "campaign_id")
     private Campaign campaign;
     
+	@JsonManagedReference
+	@OneToMany(mappedBy = "ad")
+	private List<User> users;
     
     public Long getId() {
 		return id;
@@ -65,6 +71,21 @@ public class Ad {
 		this.imp = imp;
 	}
 
-	
+	public List<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(List<User> users) {
+		this.users = new LinkedList<User>();
+		for (User user:users)
+		{
+			this.users.add(user);
+		}
+	}
+
+	public void addUsers(User user)
+	{
+		this.users.add(user);
+	}
 }
 

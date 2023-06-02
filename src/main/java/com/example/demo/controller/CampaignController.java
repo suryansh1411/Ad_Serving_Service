@@ -41,12 +41,6 @@ public class CampaignController {
 
     @GetMapping
     public Iterable<Campaign> getCampaigns(){
-    	
-//    	for (Campaign camp: campaignRepo.findAll())
-//    	{
-//    		System.out.println(camp.getAdvertiser().getId());
-//    		System.out.println(camp.getAdvertiser().getName());
-//    	}
     	return campaignRepo.findAll();
     }
 }
