@@ -9,8 +9,8 @@ public class Banner {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private int w;
-	private int h;
+	private float width;
+	private float height;
 	private int pos;
 	
 	@JsonBackReference
@@ -24,17 +24,17 @@ public class Banner {
 	public void setImp(Imp imp) {
 		this.imp = imp;
 	}
-	public int getW() {
-		return w;
+	public float getWidth() {
+		return width;
 	}
-	public void setW(int w) {
-		this.w = w;
+	public void setW(float width) {
+		this.width = width;
 	}
-	public int getH() {
-		return h;
+	public float getHeight() {
+		return height;
 	}
-	public void setH(int h) {
-		this.h = h;
+	public void setHeight(float height) {
+		this.height = height;
 	}
 	public int getPos() {
 		return pos;

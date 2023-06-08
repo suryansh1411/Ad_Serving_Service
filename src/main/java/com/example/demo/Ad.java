@@ -74,6 +74,7 @@ public class Ad {
 	public List<User> getUsers() {
 		return users;
 	}
+	
 
 	public void setUsers(List<User> users) {
 		this.users = new LinkedList<User>();
